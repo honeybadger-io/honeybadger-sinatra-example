@@ -1,14 +1,16 @@
 require 'bundler/setup'
 require 'sinatra'
+require 'sinatra'
 require 'honeybadger'
 
-Honeybadger.configure do |config|
-  config.api_key = 'my api key'
-  config.ignore << 'Sinatra::NotFound'
-end
+set :honeybadger_api_key, ENV['HONEYBADGER_API_KEY']
 
-use Honeybadger::Rack
+set :root, '/foo/bar'
 
 get '/' do
-  raise "Sinatra has left the building"
+  'Maybe you\'re looking to /fail'
+end
+
+get '/fail' do
+  fail "Sinatra has left the building"
 end
