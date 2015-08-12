@@ -1,6 +1,5 @@
 require 'bundler/setup'
 require 'sinatra'
-require 'sinatra'
 require 'honeybadger'
 
 set :honeybadger_api_key, ENV['HONEYBADGER_API_KEY']
