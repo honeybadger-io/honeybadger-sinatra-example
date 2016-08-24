@@ -6,6 +6,10 @@ set :honeybadger_api_key, ENV['HONEYBADGER_API_KEY']
 
 set :root, '/foo/bar'
 
+before do
+  Honeybadger.context({ foo: 'bar', time: Time.now.to_i })
+end
+
 get '/' do
   'Maybe you\'re looking to /fail'
 end
